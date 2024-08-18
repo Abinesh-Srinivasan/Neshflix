@@ -1,9 +1,11 @@
-import React from "react";
+import AuthScreen from "./AuthScreen";
+import HomeScreen from "./HomeScreen";
 
 const HomePage = () => {
+  const user = false;
   return (
     <div>
-      <h1 className=" text-red-600">HomePage</h1>
+      {user?<HomeScreen/>:<AuthScreen/>}
     </div>
   );
 };
