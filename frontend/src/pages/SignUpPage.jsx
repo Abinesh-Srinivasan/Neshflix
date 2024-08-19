@@ -1,13 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../store/authUser";
+
 
 const SignUpPage = () => {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  // to get email query from Auth Screen
+  const { searchParams } = new URL(document.location);
+  const emailFromAuthscreen = searchParams.get("email");
+
+  const [email, setEmail] = useState(emailFromAuthscreen || "");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+  const { signup } = useAuthStore();
+
   const handleSignup = (e) => {
     e.preventDefault();
-    console.log(email, username, password);
+    signup({ email, userName, password });
   };
   return (
     <div className="h-screen w-full hero-bg">
@@ -61,8 +70,8 @@ const SignUpPage = () => {
                 className=" w-full py-2 px-3 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring 2xl:text-2xl 2xl:mt-3 4k:mt-8 4k:text-6xl"
                 placeholder="Abinesh"
                 id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
               />
             </div>
             {/* password */}
