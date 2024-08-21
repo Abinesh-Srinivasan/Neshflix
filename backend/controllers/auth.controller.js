@@ -80,45 +80,69 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     // to check all the fields are present
     if (!email || !password) {
-      return res.status(400).json({Success:false,Message:"All fields are required"})
+      return res
+        .status(400)
+        .json({ Success: false, Message: "All fields are required" });
     }
 
     // to fetch the User Info from the Database
-    const user = await User.findOne({ email: email })
+    const user = await User.findOne({ email: email });
 
     // to check the email is already registered
     if (!user) {
-      return res.status(404).json({Success:false,Message:"Email not found"})
+      return res
+        .status(404)
+        .json({ Success: false, Message: "Email not found" });
     }
-    
+
     // to check the password is valid for respective email
-    const passwordValidation = await bcryptjs.compare(password, user.password)
+    const passwordValidation = await bcryptjs.compare(password, user.password);
     if (!passwordValidation) {
-      return res.status(400).json({Success:false,Message:"Password is Invalid"})
+      return res
+        .status(400)
+        .json({ Success: false, Message: "Password is Invalid" });
     }
 
     // to generate the token
-    generateTokenAndSetCookie(user._id,res)
+    generateTokenAndSetCookie(user._id, res);
 
-    return res.status(200).json({Success:true,User:{...user._doc,password:""}})
+    return res
+      .status(200)
+      .json({ Success: true, User: { ...user._doc, password: "" } });
   } catch (error) {
     console.error(`Login failed: ${error.message}`);
-    return res.status(500).json({Success:false,Message:"Internal server error"})
+    return res
+      .status(500)
+      .json({ Success: false, Message: "Internal server error" });
   }
 };
 const logout = async (req, res) => {
   try {
-   // to clear the cookie
+    // to clear the cookie
     res.clearCookie("jwt-netflix");
-    
-    return res.status(200).json({ Success: true, Message: "Logged out Successfully" })
+
+    return res
+      .status(200)
+      .json({ Success: true, Message: "Logged out Successfully" });
   } catch (error) {
     console.error(`Logout error: ${error.message}`);
-    return res.status(500).json({Success:false,Message:"Internal server error"})
+    return res
+      .status(500)
+      .json({ Success: false, Message: "Internal server error" });
   }
 };
 
-export default { signup, login, logout };
+const authCheck = (req, res) => {
+  try {
+    console.log("req.user:", req.user);
+    res.status(200).json({ Success: true, user: req.user });
+  } catch (error) {
+    console.log("Error in authCheck controller", error.message);
+    res.status(500).json({ Success: false, Message: "Internal server error" });
+  }
+};
+
+export default { signup, login, logout, authCheck };
