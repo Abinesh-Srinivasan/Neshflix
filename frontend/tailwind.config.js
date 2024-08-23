@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 import tailwindScrollbarHide from "tailwind-scrollbar-hide"
 
 export default {
