@@ -10,7 +10,7 @@ import { Loader } from "lucide-react";
 
 function App() {
   const { user, isCheckingAuth, authCheck } = useAuthStore(); // destructuring the global variables from authUser
-  console.log(`Auth User: ${user}`);
+  console.log("Auth User:",user);
 
   useEffect(() => {
     authCheck();
