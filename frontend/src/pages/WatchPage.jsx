@@ -116,7 +116,7 @@ const WatchPage = () => {
               disabled={currentTrailerIdx === 0}
               onClick={() => setCurrentTrailerIdx((prev) => prev - 1)}
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft className=" size-6 2xl:size-9 4k:size-24" />
             </button>
             <button
               className={`bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded ${
@@ -127,7 +127,7 @@ const WatchPage = () => {
               disabled={currentTrailerIdx === trailers.length - 1}
               onClick={() => setCurrentTrailerIdx((prev) => prev + 1)}
             >
-              <ChevronRight size={24} />
+              <ChevronRight className=" size-6 2xl:size-9 4k:size-24" />
             </button>
           </div>
         )}
