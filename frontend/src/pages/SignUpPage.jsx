@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/authUser";
 
-
 const SignUpPage = () => {
   // to get email query from Auth Screen
   const { searchParams } = new URL(document.location);

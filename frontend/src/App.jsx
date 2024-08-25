@@ -10,10 +10,12 @@ import { Loader } from "lucide-react";
 import WatchPage from "./pages/WatchPage";
 import SearchPage from "./pages/SearchPage";
 import SearchHistoryPage from "./pages/SearchHistoryPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const { user, isCheckingAuth, authCheck } = useAuthStore(); // destructuring the global variables from authUser
-  console.log("Auth User:", user);
+
+  // console.log("Auth User:", user);
 
   useEffect(() => {
     authCheck();
@@ -53,6 +55,7 @@ function App() {
           path="/history"
           element={user ? <SearchHistoryPage /> : <Navigate to={"/login"} />}
         />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
       <Toaster />

@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import { Search } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import {ORIGINAL_IMG_BASE_URL} from "../../utils/constant"
+import { ORIGINAL_IMG_BASE_URL } from "../../utils/constant";
 import { Link } from "react-router-dom";
 
 const SearchPage = () => {
@@ -35,7 +35,6 @@ const SearchPage = () => {
     }
   };
 
-  
   return (
     <div className=" bg-black min-h-screen text-white">
       <Navbar />
@@ -86,17 +85,23 @@ const SearchPage = () => {
         {/* rendering the results */}
         <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 4k:p-32 4k:gap-16">
           {results.map((result) => {
-            if (!result.poster_path && !result.profile_path) return null
+            if (!result.poster_path && !result.profile_path) return null;
             return (
               <div key={result.id} className="bg-gray-800 p-4 rounded">
                 {activeTab === "person" ? (
                   <div className="flex flex-col items-center">
-                    <img
-                      src={ORIGINAL_IMG_BASE_URL + result.profile_path}
-                      alt={result.name}
-                      className="max-h-96 rounded mx-auto"
-                    />
-                    <h2 className="mt-2 text-xl font-bold 2xl:text-3xl 2xl:mt-4 4k:mt-8 4k:text-6xl">{result.name}</h2>
+                    <a
+                      href={`https://in.search.yahoo.com/search?p=${result.name}`} target="_blank"
+                    >
+                      <img
+                        src={ORIGINAL_IMG_BASE_URL + result.profile_path}
+                        alt={result.name}
+                        className="max-h-96 rounded mx-auto"
+                      />
+                      <h2 className="mt-2 text-xl font-bold 2xl:text-3xl 2xl:mt-4 4k:mt-8 4k:text-6xl">
+                        {result.name}
+                      </h2>
+                    </a>
                   </div>
                 ) : (
                   <Link

@@ -13,7 +13,7 @@ export const useAuthStore = create((set) => ({
     try {
       const response = await axios.post("/api/v1/auth/signup", credentials);
       set({ user: response.data.User, isSigningUp: false });
-      console.log(response.data.User)
+      // console.log(response.data.User)
       toast.success("Account created successfully");
     } catch (error) {
       toast.error(error.response.data.Message || "Signup failed");
@@ -46,7 +46,7 @@ export const useAuthStore = create((set) => ({
     try {
       const response = await axios.get("/api/v1/auth/authCheck");
       set({ user: response.data.user, isCheckingAuth: false });
-      console.log(response.data.user)
+      // console.log(response.data.user)
     } catch (error) {
       set({ isCheckingAuth: false, user: null });
       // toast.error(error.response.data.Message || "An error occurred");

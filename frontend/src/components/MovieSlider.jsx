@@ -66,7 +66,9 @@ const MovieSlider = ({ category }) => {
                 className=" transition-transform duration-300 ease-in-out group-hover:scale-125"
               />
             </div>
-            <p className=" text-center mt-2 2xl:text-3xl 2xl:mt-5 4k:mt-10 4k:text-6xl 4k:leading-snug">{item.title || item.name}</p>
+            <p className=" text-center mt-2 2xl:text-3xl 2xl:mt-5 4k:mt-10 4k:text-6xl 4k:leading-snug">
+              {item.title || item.name}
+            </p>
           </Link>
         ))}
       </div>

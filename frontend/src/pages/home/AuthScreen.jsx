@@ -7,8 +7,8 @@ const AuthScreen = () => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/signup?email="+email)
-  }
+    navigate("/signup?email=" + email);
+  };
   return (
     <div className=" hero-bg relative">
       {/* Navbar */}
@@ -18,7 +18,10 @@ const AuthScreen = () => {
           alt="netflix logo"
           className="w-40 md:w-52 2xl:w-64 4k:w-96"
         />
-        <Link to={"/login"} className="text-white bg-red-600 py-1 px-2 rounded 2xl:text-3xl 2xl:px-4 2xl:py-2 4k:text-6xl 4k:px-8 4k:py-6">
+        <Link
+          to={"/login"}
+          className="text-white bg-red-600 py-1 px-2 rounded 2xl:text-3xl 2xl:px-4 2xl:py-2 4k:text-6xl 4k:px-8 4k:py-6"
+        >
           Sign In
         </Link>
       </header>
@@ -27,12 +30,17 @@ const AuthScreen = () => {
         <h1 className=" text-4xl md:text-6xl font-bold mb-4 2xl:mb-6 4k:mb-16 4k:text-9xl">
           Unlimited Movies, TV shows and more
         </h1>
-        <p className="text-lg mb-4 2xl:text-2xl 2xl:mb-6 4k:mb-16 4k:text-7xl">Watch anywhere. Cancel anytime.</p>
+        <p className="text-lg mb-4 2xl:text-2xl 2xl:mb-6 4k:mb-16 4k:text-7xl">
+          Watch anywhere. Cancel anytime.
+        </p>
         <p className="mb-4 2xl:mb-6 2xl:text-2xl 4k:mb-16 4k:text-6xl">
           Ready to watch? Enter your email to create or restart your membership.
         </p>
         {/* form */}
-        <form className="flex flex-col md:flex-row gap-4 w-1/2 4k:gap-8" onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col md:flex-row gap-4 w-1/2 4k:gap-8"
+          onSubmit={handleSubmit}
+        >
           <input
             type="email"
             className=" p-2 rounded flex-1 bg-black/80 border border-gray-700 2xl:text-3xl 2xl:p-4 4k:text-6xl 4k:p-6"
@@ -96,16 +104,10 @@ const AuthScreen = () => {
               w-3/4 lg:w-1/2 h-24 border border-slate-500 rounded-md px-2
               "
               >
-                <img
-                  src="/kurup.jpg"
-                  alt="image"
-                  className="h-full"
-                />
+                <img src="/kurup.jpg" alt="image" className="h-full" />
                 <div className=" flex justify-between items-center w-full">
                   <div className="flex flex-col gap-0">
-                    <span className="text-md lg:text-lg font-bold">
-                      Kurup
-                    </span>
+                    <span className="text-md lg:text-lg font-bold">Kurup</span>
                     <span className="text-sm text-blue-500">
                       Downloading...
                     </span>
