@@ -6,7 +6,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login } = useAuthStore();
+  const { login, isLoggingIn } = useAuthStore();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -69,8 +69,11 @@ const LoginPage = () => {
               />
             </div>
             {/* login button*/}
-            <button className=" w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 2xl:text-3xl 2xl:rounded-lg 2xl:py-4 4k:rounded-2xl 4k:py-8 4k:text-6xl">
-              Login
+            <button
+              className=" w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 2xl:text-3xl 2xl:rounded-lg 2xl:py-4 4k:rounded-2xl 4k:py-8 4k:text-6xl"
+              disabled={isLoggingIn}
+            >
+              {isLoggingIn ? "Loading..." : "Login"}
             </button>
           </form>
           <div className=" text-center text-gray-400 2xl:text-3xl 4k:text-6xl">
