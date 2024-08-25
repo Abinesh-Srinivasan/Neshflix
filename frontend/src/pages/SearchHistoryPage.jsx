@@ -6,9 +6,7 @@ import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
 function formatDate(dateString) {
-  // Create a Date object from the input date string
   const date = new Date(dateString);
-
   const monthNames = [
     "Jan",
     "Feb",
@@ -29,7 +27,6 @@ function formatDate(dateString) {
   const day = date.getUTCDate();
   const year = date.getUTCFullYear();
 
-  // Return the formatted date string
   return `${month} ${day}, ${year}`;
 }
 
@@ -50,10 +47,15 @@ const SearchHistoryPage = () => {
 
   const handleDelete = async (entry) => {
     try {
+      await axios.delete(`/api/v1/search/history/${entry.id}/`);
       setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
-      await axios.delete(`/api/v1/search/history/${entry.id}`);
     } catch (error) {
-      console.log("Error in handleDelete: ",error.message,"Entry id:",entry.id)
+      console.log(
+        "Error in handleDelete: ",
+        error.message,
+        "Entry id:",
+        entry.id
+      );
       toast.error("Failed to delete search item");
     }
   };
