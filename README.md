@@ -25,13 +25,8 @@
 ## Live Website  
 
 Access the live version here:  
-[**Neshflix Live**](https://yourwebsite.com)
-
----
-
-## Contributing  
-
-Contributions are welcome! Check the [issues page](https://github.com/yourusername/neshflix/issues).  
+[**Neshflix**](https://neshflix-eiri.onrender.com/)
+  
 
 ---
 
